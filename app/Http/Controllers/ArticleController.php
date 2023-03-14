@@ -286,7 +286,7 @@ class ArticleController extends Controller
      *     @OA\Response(response="default", description="Hapus Artikel")
      * )
      */
-    function destroy($id)
+    function destroy( Request $request, $id)
     {
 
         $articles = Article::query()
@@ -301,8 +301,8 @@ class ArticleController extends Controller
             ]);
         }
 
-        $path = parse_url($articles->media);
-        unlink(public_path() . $path['path']);
+        $banner = str_replace($request->getSchemeAndHttpHost() . "/storage/", "", $articles->media);
+        Storage::disk('public')->delete($banner);
         $articles->delete();
 
         return response()->json([
