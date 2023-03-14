@@ -170,7 +170,7 @@ class ArticleController extends Controller
                 //     $filename
                 // );
                 
-            $banner = $request->getSchemeAndHttpHost() . '/storage/' . $request->file('media')->store('media', 'public');
+            $filename = $request->getSchemeAndHttpHost() . '/storage/' . $request->file('media')->store('media', 'public');
                     
             //get url from file foto
             $payload['media'] = $request->getSchemeAndHttpHost() . "/storage/" . $filename;
