@@ -18,7 +18,7 @@
                 "tags": [
                     "Articles"
                 ],
-                "summary": "Menampilkan Semua List Artikel",
+                "summary": "Menampilkan List Artikel",
                 "description": "List Artikel",
                 "operationId": "11aa4cc6561a7b94c56d1201d62513ee",
                 "responses": {

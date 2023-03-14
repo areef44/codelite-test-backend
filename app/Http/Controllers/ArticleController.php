@@ -19,7 +19,7 @@ class ArticleController extends Controller
      * @OA\Get(
      *     path="/api/articles",
      *     tags={"Articles"},
-     *     summary="Menampilkan Semua List Artikel",
+     *     summary="Menampilkan List Artikel",
      *     description="List Artikel",
      *     @OA\Response(response="default", description="List Articles")
      * )
@@ -33,7 +33,7 @@ class ArticleController extends Controller
             ->select('articles.*','categories.category');
 
             if ($request->has('categories')) {
-                $article->where('articles.id_categories', $request->category);
+                $article->where('articles.id_categories', $request->categories);
             }
     
             $page = $request->get('page', 1);
