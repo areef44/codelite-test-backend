@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class ArticleControllerController
@@ -162,7 +163,7 @@ class ArticleController extends Controller
             $filename = $thumbnail->hashName();
 
             //move file to folder photo
-            $thumbnail->move(
+            $thumbnail->store(
                 "media",
                 $filename
             );
