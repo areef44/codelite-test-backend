@@ -158,17 +158,6 @@ class ArticleController extends Controller
 
         
         if ($request->file("media") != null) {
-            //request file photo dari device
-            // $thumbnail = $request->file("media");
-            
-            // //hash name foto 
-            // $filename = $thumbnail->hashName();
-            
-            // //move file to folder photo
-            // $thumbnail->store(
-                //     "media",
-                //     $filename
-                // );
                 
             $filename = $request->getSchemeAndHttpHost() . '/storage/' . $request->file('media')->store('media', 'public');
                     
@@ -262,16 +251,10 @@ class ArticleController extends Controller
             $request->file("media") != null
         ) {
             //request file photo dari device
-            $thumbnail = $request->file("media");
-
-            //hash name foto 
-            $filename = $thumbnail->hashName();
-
-            //move file to folder photo
-            $thumbnail->move("media", $filename);
-
+            $filename = $request->getSchemeAndHttpHost() . '/storage/' . $request->file('media')->store('media', 'public');
+                    
             //get url from file foto
-            $payload['media'] = $request->getSchemeAndHttpHost() . "/media/" . $filename;
+            $payload['media'] = $filename;
         }
 
         $articles = Article::find($id);
